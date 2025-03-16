@@ -1,0 +1,46 @@
+/* style.css */
+
+/* Page Background */
+body {
+    background-color: #f0f0f0; /* Light gray background */
+    font-family: Arial, sans-serif; /* Font style */
+    color: #333; /* Text color */
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Style */
+header {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+/* Content Section */
+.section {
+    padding: 20px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+button {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005f73;
+}
