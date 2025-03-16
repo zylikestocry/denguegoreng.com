@@ -1,46 +1,99 @@
-/* style.css */
-
-/* Page Background */
-body {
-    background-color: #f0f0f0; /* Light gray background */
-    font-family: Arial, sans-serif; /* Font style */
-    color: #333; /* Text color */
+/* Resetting default styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Style */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa;  /* Sky blue background */
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
 }
 
 /* Header Style */
 header {
-    background-color: #4CAF50; /* Green background */
-    color: white;
-    padding: 10px 0;
     text-align: center;
-}
-
-h1 {
-    font-size: 2em;
-    margin: 0;
-}
-
-/* Content Section */
-.section {
-    padding: 20px;
-    margin: 10px;
-    background-color: white;
+    background-color: #81d4fa;  /* Light blue */
+    color: #fff;
+    padding: 20px 0;
     border-radius: 8px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+}
+
+/* Section for Introduction */
+.intro {
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Buttons */
-button {
-    background-color: #008CBA;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.intro p {
+    font-size: 1.2rem;
+    color: #555;
 }
 
-button:hover {
-    background-color: #005f73;
+.dengue-img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Action Buttons */
+.actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.pixel-button {
+    background-color: #4caf50; /* Green for prevention */
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: 2px solid #388e3c;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace; /* Pixel style font */
+    transition: transform 0.2s ease;
+}
+
+.pixel-button:hover {
+    transform: scale(1.1); /* Button enlargement on hover */
+    background-color: #388e3c; /* Darker green on hover */
+}
+
+/* Coquette Styling */
+.actions h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+    color: #4CAF50;
+}
+
+/* For small screens */
+@media (max-width: 768px) {
+    .intro p {
+        font-size: 1rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .pixel-button {
+        width: 80%;
+        margin: 10px 0;
+    }
 }
