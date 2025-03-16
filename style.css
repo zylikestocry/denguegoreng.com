@@ -1,4 +1,4 @@
-/* Resetting default styles */
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
@@ -7,29 +7,32 @@
 
 /* Body Styling */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #e0f7fa;  /* Light Sky Blue Background */
+    font-family: 'Courier New', monospace; /* Pixelated font */
+    background-color: #e0f7fa;  /* Light Sky Blue */
     color: #333;
     line-height: 1.6;
     padding: 20px;
+    font-size: 1.1rem;
 }
 
 /* Header Styling */
 header {
     text-align: center;
-    background-color: #81d4fa;  /* Light Blue */
-    color: white;
-    padding: 20px;
+    background-color: #80deea;  /* Light Blue */
+    padding: 30px;
     border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
     font-size: 2.5rem;
     font-weight: bold;
     font-family: 'Georgia', serif;
+    color: #00796b;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* Navigation Styling */
+/* Navigation Menu */
 nav ul {
     display: flex;
     justify-content: center;
@@ -43,14 +46,16 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: white;
     font-size: 1.1rem;
+    color: #00796b;
     font-weight: bold;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
 }
 
 nav ul li a:hover {
-    color: #ff4081;  /* Coquette Pink on Hover */
+    color: #ff4081;  /* Coquette Pink */
+    transform: scale(1.1);
 }
 
 /* Section Styling */
@@ -64,16 +69,18 @@ section {
 }
 
 section h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 20px;
     font-family: 'Georgia', serif;
+    color: #00796b;
 }
 
 section p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #555;
 }
 
+/* Pixel Image Styling */
 .pixel-image {
     width: 150px;
     margin: 20px;
@@ -114,6 +121,52 @@ footer {
     color: #444;
 }
 
+/* Form Styling for Image Upload */
+form {
+    margin-top: 30px;
+}
+
+form input[type="file"] {
+    font-size: 1rem;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 2px solid #00796b;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form input[type="submit"] {
+    background-color: #ff4081;  /* Coquette Pink */
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #d81b60;
+}
+
+/* Chat Button Styling */
+button {
+    background-color: #ff4081;  /* Coquette Pink */
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #d81b60;
+    transform: scale(1.05);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     header h1 {
@@ -126,6 +179,6 @@ footer {
     }
     
     section h2 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
 }
