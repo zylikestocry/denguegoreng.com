@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Stagnant Water Image</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Upload Stagnant Water Image</h1>
+    </header>
+
+    <section id="upload-section">
+        <h2>Help us prevent dengue by uploading images of stagnant water!</h2>
+
+        <form id="upload-form" action="upload-process.php" method="POST" enctype="multipart/form-data">
+            <input type="file" name="stagnant-water-image" accept="image/*" required>
+            <button type="submit">Upload Image</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Thank you for your action in preventing dengue!</p>
+    </footer>
+</body>
+</html>
