@@ -5,21 +5,21 @@
     box-sizing: border-box;
 }
 
-/* Body Style */
+/* Body Styling */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #e0f7fa;  /* Sky blue background */
+    background-color: #e0f7fa;  /* Light Sky Blue Background */
     color: #333;
     line-height: 1.6;
     padding: 20px;
 }
 
-/* Header Style */
+/* Header Styling */
 header {
     text-align: center;
-    background-color: #81d4fa;  /* Light blue */
-    color: #fff;
-    padding: 20px 0;
+    background-color: #81d4fa;  /* Light Blue */
+    color: white;
+    padding: 20px;
     border-radius: 8px;
 }
 
@@ -29,71 +29,103 @@ header h1 {
     font-family: 'Georgia', serif;
 }
 
-/* Section for Introduction */
-.intro {
+/* Navigation Styling */
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-top: 20px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff4081;  /* Coquette Pink on Hover */
+}
+
+/* Section Styling */
+section {
     text-align: center;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 40px 0;
+    padding: 30px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.intro p {
-    font-size: 1.2rem;
+section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+}
+
+section p {
+    font-size: 1.1rem;
     color: #555;
 }
 
-.dengue-img {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
-    margin-top: 20px;
+.pixel-image {
+    width: 150px;
+    margin: 20px;
+    image-rendering: pixelated;
 }
 
-/* Action Buttons */
-.actions {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.pixel-button {
-    background-color: #4caf50; /* Green for prevention */
+/* Button Styling */
+button {
+    background-color: #4caf50;
     color: white;
     padding: 15px 30px;
     font-size: 1.2rem;
     border: 2px solid #388e3c;
     border-radius: 10px;
     cursor: pointer;
-    font-family: 'Courier New', monospace; /* Pixel style font */
+    font-family: 'Courier New', monospace; /* Pixelated font */
     transition: transform 0.2s ease;
+    margin: 20px 0;
 }
 
-.pixel-button:hover {
-    transform: scale(1.1); /* Button enlargement on hover */
-    background-color: #388e3c; /* Darker green on hover */
+button:hover {
+    transform: scale(1.1);
+    background-color: #388e3c;
 }
 
-/* Coquette Styling */
-.actions h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    font-family: 'Georgia', serif;
-    color: #4CAF50;
+/* Points Section */
+#points {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
-/* For small screens */
+/* Footer Styling */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    .intro p {
-        font-size: 1rem;
-    }
-    
     header h1 {
         font-size: 2rem;
     }
     
-    .pixel-button {
+    button {
         width: 80%;
-        margin: 10px 0;
+        padding: 12px;
+    }
+    
+    section h2 {
+        font-size: 1.5rem;
     }
 }
