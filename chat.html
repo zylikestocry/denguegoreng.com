@@ -9,24 +9,23 @@
 <body>
     <header>
         <h1>Chat with Others</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="prevention.html">How to Prevent Dengue</a></li>
-                <li><a href="clear-water.html">Clear Stagnant Water</a></li>
-                <li><a href="chat.html">Chat with Others</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section>
-        <h2>Join the Conversation</h2>
-        <p>Join our real-time chat to discuss dengue prevention, share tips, and ask questions!</p>
-        <button onclick="window.location.href='https://chat.example.com'">Start Chat</button>
+    <section id="chat-section">
+        <div id="chat-box">
+            <!-- Chat messages will be displayed here -->
+        </div>
+
+        <form id="chat-form">
+            <input type="text" id="chat-message" placeholder="Type a message..." required />
+            <button type="submit" id="send-button">Send</button>
+        </form>
     </section>
 
     <footer>
-        <p>Let's work together to eliminate dengue!</p>
+        <p>Stay safe and share helpful information about dengue!</p>
     </footer>
+
+    <script src="chat.js"></script>
 </body>
 </html>
