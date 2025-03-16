@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dengue Prevention Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Dengue Prevention Quiz</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="prevention.html">How to Prevent Dengue</a></li>
+                <li><a href="clear-water.html">Clear Stagnant Water</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="quiz">
+        <h2>Test Your Knowledge about Dengue</h2>
+
+        <!-- Question 1 -->
+        <div class="question">
+            <p>1. How is dengue primarily transmitted?</p>
+            <input type="radio" name="q1" value="mosquito" id="q1a">
+            <label for="q1a">Through mosquito bites</label><br>
+            <input type="radio" name="q1" value="direct-contact" id="q1b">
+            <label for="q1b">Through direct contact with an infected person</label><br>
+            <input type="radio" name="q1" value="water" id="q1c">
+            <label for="q1c">Through stagnant water</label><br>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. What is one of the most common symptoms of dengue?</p>
+            <input type="radio" name="q2" value="fever" id="q2a">
+            <label for="q2a">High fever</label><br>
+            <input type="radio" name="q2" value="headache" id="q2b">
+            <label for="q2b">Headache</label><br>
+            <input type="radio" name="q2" value="skin-rash" id="q2c">
+            <label for="q2c">Skin rash</label><br>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <p>3. What can help prevent mosquito breeding for dengue?</p>
+            <input type="radio" name="q3" value="clean-water" id="q3a">
+            <label for="q3a">Clear stagnant water</label><br>
+            <input type="radio" name="q3" value="mosquito-net" id="q3b">
+            <label for="q3b">Use mosquito nets</label><br>
+            <input type="radio" name="q3" value="both" id="q3c">
+            <label for="q3c">Both</label><br>
+        </div>
+
+        <!-- Submit Button -->
+        <button onclick="submitQuiz()">Submit Quiz</button>
+
+        <!-- Result Section -->
+        <div id="result" style="display:none;">
+            <h3>Your Score: <span id="score">0</span></h3>
+        </div>
+    </section>
+
+    <footer>
+        <p>Stay informed and take action against Dengue!</p>
+   
