@@ -3,58 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dengue Quiz</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
-        .question { margin: 20px 0; }
-        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
-    </style>
+    <title>Dengue Prevention Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="quiz.js"></script> <!-- Ensure JavaScript loads after the page -->
 </head>
 <body>
-    <h1>Dengue Awareness Quiz</h1>
-    <div id="quiz"></div>
-    <button onclick="submitQuiz()">Submit</button>
-    <h2 id="result"></h2>
+    <header>
+        <h1>Dengue Prevention Quiz</h1>
+    </header>
 
-    <script>
-        const questions = [
-            { q: "What is the primary vector of dengue fever?", options: ["Mosquitoes", "Bacteria", "Viruses"], answer: 0 },
-            { q: "Which mosquito species spreads dengue?", options: ["Anopheles", "Aedes aegypti", "Culex"], answer: 1 },
-            { q: "What is a common symptom of dengue fever?", options: ["Sneezing", "Coughing", "High fever and joint pain"], answer: 2 },
-            { q: "Is there a specific antiviral treatment for dengue?", options: ["Yes", "No"], answer: 1 },
-            { q: "Which of the following is a way to prevent dengue?", options: ["Using mosquito repellent", "Eating garlic", "Taking antibiotics"], answer: 0 },
-            { q: "Dengue fever is caused by:", options: ["Bacteria", "Virus", "Fungi"], answer: 1 },
-            { q: "Severe dengue can lead to:", options: ["Mild fever", "Cold symptoms", "Organ failure and bleeding"], answer: 2 },
-            { q: "Which season is dengue most prevalent in tropical areas?", options: ["Rainy season", "Winter", "Dry season"], answer: 0 },
-            { q: "Dengue vaccine is available for:", options: ["Everyone", "People with prior dengue infection", "Only infants"], answer: 1 },
-            { q: "How can mosquito breeding be prevented?", options: ["Spraying pesticides", "Increasing stagnant water", "Eliminating standing water"], answer: 2 }
-        ];
+    <section id="quiz-container">
+        <h2>Test Your Knowledge!</h2>
+        <form id="quiz-form">
+            <!-- Question 1 -->
+            <div class="question">
+                <p>1. What is the primary way dengue is transmitted?</p>
+                <label><input type="radio" name="q1" value="A"> Direct contact with an infected person</label><br>
+                <label><input type="radio" name="q1" value="B"> Bites from infected Aedes mosquitoes</label><br>
+                <label><input type="radio" name="q1" value="C"> Drinking contaminated water</label><br>
+            </div>
 
-        function loadQuiz() {
-            let quizDiv = document.getElementById("quiz");
-            quizDiv.innerHTML = "";
-            questions.forEach((q, index) => {
-                let questionHTML = `<div class='question'><p>${index + 1}. ${q.q}</p>`;
-                q.options.forEach((option, i) => {
-                    questionHTML += `<input type='radio' name='q${index}' value='${i}'> ${option} <br>`;
-                });
-                questionHTML += "</div>";
-                quizDiv.innerHTML += questionHTML;
-            });
-        }
+            <!-- Question 2 -->
+            <div class="question">
+                <p>2. What is the best way to prevent dengue?</p>
+                <label><input type="radio" name="q2" value="A"> Take antibiotics</label><br>
+                <label><input type="radio" name="q2" value="B"> Remove stagnant water and prevent mosquito breeding</label><br>
+                <label><input type="radio" name="q2" value="C"> Eat healthy food</label><br>
+            </div>
 
-        function submitQuiz() {
-            let score = 0;
-            questions.forEach((q, index) => {
-                let selected = document.querySelector(`input[name='q${index}']:checked`);
-                if (selected && parseInt(selected.value) === q.answer) {
-                    score++;
-                }
-            });
-            document.getElementById("result").innerText = `Your score: ${score}/10`;
-        }
+            <!-- Question 3 -->
+            <div class="question">
+                <p>3. When are Aedes mosquitoes most active?</p>
+                <label><input type="radio" name="q3" value="A"> Afternoon</label><br>
+                <label><input type="radio" name="q3" value="B"> Dawn and dusk</label><br>
+                <label><input type="radio" name="q3" value="C"> Midnight</label><br>
+            </div>
 
-        loadQuiz();
-    </script>
+            <!-- Question 4 -->
+            <div class="question">
+                <p>4. What are common symptoms of dengue?</p>
+                <label><input type="radio" name="q4" value="A"> Fever, joint pain, rash</label><br>
+                <label><input type="radio" name="q4" value="B"> Cough and sore throat</label><br>
+                <label><input type="radio" name="q4" value="C"> Red eyes and runny nose</label><br>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <p>5. What should you do if you have dengue?</p>
+                <label><input type="radio" name="q5" value="A"> Drink plenty of fluids and rest</label><br>
+                <label><input type="radio" name="q5" value="B"> Ignore it, it will go away on its own</label><br>
+                <label><input type="radio" name="q5" value="C"> Take antibiotics</label><br>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <p>6. Which mosquito is responsible for spreading dengue?</p>
+                <label><input type="radio" name="q6" value="A"> Anopheles mosquito</label><br>
+                <label><input type="radio" name="q6" value="B"> Aedes mosquito</label><br>
+                <label><input type="radio" name="q6" value="C"> Culex mosquito</label><br>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question">
+                <p>7. Where do Aedes mosquitoes commonly breed?</p>
+                <label><input type="radio" name="q7" value="A"> Rivers and lakes</label><br>
+                <label><input type="radio" name="q7" value="B"> Stagnant water in containers</label><br>
+                <label><input type="radio" name="q7" value="C"> Mud and soil</label><br>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question">
+                <p>8. How long does the dengue virus incubation period last?</p>
+                <label><input type="radio" name="q8" value="A"> 1-2 days</label><br>
+                <label><input type="radio" name="q8" value="B"> 4-10 days</label><br>
+                <label><input type="radio" name="q8" value="C"> 2-3 weeks</label><br>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question">
+                <p>9. Which color clothing helps prevent mosquito bites?</p>
+                <label><input type="radio" name="q9" value="A"> Dark-colored clothes</label><br>
+                <label><input type="radio" name="q9" value="B"> Light-colored clothes</label><br>
+                <label><input type="radio" name="q9" value="C"> Transparent clothes</label><br>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question">
+                <p>10. Is there a specific cure for dengue?</p>
+                <label><input type="radio" name="q10" value="A"> Yes, antibiotics can cure it</label><br>
+                <label><input type="radio" name="q10" value="B"> No, only supportive treatment is available</label><br>
+                <label><input type="radio" name="q10" value="C"> Yes, vaccines can cure it completely</label><br>
+            </div>
+
+            <button type="button" class="btn" onclick="submitQuiz()">Submit</button>
+        </form>
+
+        <div id="result" class="hidden"></div>
+    </section>
+
+    <footer>
+        <p>Stay informed and take action. Together, we can fight dengue!</p>
+    </footer>
 </body>
 </html>
