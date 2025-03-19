@@ -15,6 +15,12 @@ function submitQuiz() {
     let score = 0;
     let totalQuestions = Object.keys(answers).length;
 
+    let resultBox = document.getElementById("result");
+    if (!resultBox) {
+        console.error("Error: Result box not found!");
+        return;
+    }
+
     // Loop through answers and check correctness
     for (let key in answers) {
         let selectedOption = document.querySelector(`input[name="${key}"]:checked`);
@@ -36,7 +42,6 @@ function submitQuiz() {
     }
 
     // Generate feedback message
-    let resultBox = document.getElementById("result");
     resultBox.classList.remove("hidden");
 
     let message = "";
@@ -50,4 +55,5 @@ function submitQuiz() {
         message = "😟 Uh-oh! You need to improve your knowledge to stay safe from dengue!";
     }
 
-    resultBox.innerHTML = `<p>Your Score: <strong>${score}/${totalQuestions}</strong></p><p>${m
+    resultBox.innerHTML = `<p>Your Score: <strong>${score}/${totalQuestions}</strong></p><p>${message}</p>`;
+}
