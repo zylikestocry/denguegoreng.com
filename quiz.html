@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script defer src="quiz.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dengue Prevention Quiz</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="quiz.js"></script> <!-- Ensure JavaScript loads after the page -->
+    <script defer src="quiz.js"></script> <!-- ✅ Only ONE script tag -->
 </head>
 <body>
     <header>
@@ -97,9 +96,11 @@
             </div>
 
         <button type="button" class="btn" onclick="submitQuiz()">Submit</button>
-<div id="result" class="hidden"></div>
+        </form>
 
+        <div id="result" class="hidden"></div>
     </section>
+
     <footer>
         <p>Stay informed and take action. Together, we can fight dengue!</p>
     </footer>
