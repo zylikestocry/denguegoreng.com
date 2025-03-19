@@ -1,37 +1,53 @@
-let score = 0;
+function submitQuiz() {
+    let answers = {
+        q1: "B",
+        q2: "B",
+        q3: "B",
+        q4: "A",
+        q5: "A",
+        q6: "B",
+        q7: "B",
+        q8: "B",
+        q9: "B",
+        q10: "B"
+    };
 
-function selectAnswer(option, correctness) {
-    // Remove previous selections
-    let options = option.parentElement.querySelectorAll("li");
-    options.forEach(opt => opt.style.background = "#1e3a8a");
+    let score = 0;
+    let totalQuestions = Object.keys(answers).length;
 
-    // Highlight selected answer
-    if (correctness === "correct") {
-        option.style.background = "#28a745"; // Green for correct
-    } else {
-        option.style.background = "#dc3545"; // Red for wrong
+    // Loop through answers and check correctness
+    for (let key in answers) {
+        let selectedOption = document.querySelector(`input[name="${key}"]:checked`);
+
+        if (selectedOption) {
+            let parentLabel = selectedOption.parentElement;
+
+            // Reset styles first
+            let options = document.getElementsByName(key);
+            options.forEach(opt => opt.parentElement.style.color = "black"); // Reset to default
+
+            if (selectedOption.value === answers[key]) {
+                score++;
+                parentLabel.style.color = "#28a745"; // Green for correct
+            } else {
+                parentLabel.style.color = "#dc3545"; // Red for wrong
+            }
+        }
     }
 
-    // Update score
-    if (correctness === "correct") {
-        score++;
-    }
-}
-
-function calculateScore() {
+    // Generate feedback message
     let resultBox = document.getElementById("result");
-    resultBox.style.display = "block";
+    resultBox.classList.remove("hidden");
 
-    if (score === 3) {
-        resultBox.innerHTML = "🎉 Perfect Score! You know how to prevent dengue!";
-        resultBox.style.color = "#28a745";
-    } else if (score === 2) {
-        resultBox.innerHTML = "👍 Good Job! But there's still more to learn.";
-        resultBox.style.color = "#ffcc00";
+    let message = "";
+    if (score === totalQuestions) {
+        message = "🏆 Perfect score! You're a **Dengue Slayer**! Keep up the great work! 💪";
+    } else if (score >= 7) {
+        message = "👍 Great job! You know how to prevent dengue, but there's always more to learn!";
+    } else if (score >= 4) {
+        message = "🤔 Not bad! But you need to learn more to fight dengue effectively!";
     } else {
-        resultBox.innerHTML = "😟 You need to learn more about dengue prevention!";
-        resultBox.style.color = "#dc3545";
+        message = "😟 Uh-oh! You need to improve your knowledge to stay safe from dengue!";
     }
 
-    score = 0; // Reset score for future attempts
-}
+    resultBox.innerHTML = `<p>Your Score: <strong>${score}/${totalQuestions}</strong></p><p>${m
