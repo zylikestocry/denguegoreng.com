@@ -22,11 +22,45 @@
     <section>
         <h2>Submit Your Report</h2>
         <p>Upload photos of stagnant water and its removal.</p>
-        <button>Upload Photo</button>
+
+        <!-- ✅ Image Upload Form (Linked to Google Forms) -->
+        <form id="uploadForm" action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" enctype="multipart/form-data">
+            <label for="beforeImage">Before (Stagnant Water):</label><br>
+            <input type="file" id="beforeImage" name="entry.YOUR_BEFORE_FIELD_ID" accept="image/*" required><br><br>
+
+            <label for="afterImage">After (Cleared Water):</label><br>
+            <input type="file" id="afterImage" name="entry.YOUR_AFTER_FIELD_ID" accept="image/*" required><br><br>
+
+            <!-- Hidden Input to Store User ID -->
+            <input type="hidden" id="userIDField" name="entry.YOUR_USERID_FIELD_ID">
+
+            <button type="submit">Submit</button>
+        </form>
     </section>
 
     <footer>
         <p>Stay informed and take action. Together, we can fight dengue!</p>
     </footer>
+
+    <script>
+        // ✅ Retrieve stored User ID from cookies
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i].trim();
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let userID = getCookie("userID");
+            if (userID) {
+                document.getElementById("userIDField").value = userID;
+            }
+        });
+    </script>
 </body>
 </html>
+
