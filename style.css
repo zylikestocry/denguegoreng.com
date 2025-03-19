@@ -1,184 +1,94 @@
-/* Global Reset */
-* {
+/* Global Styles */
+body {
+    font-family: "Times New Roman", Times, serif;
+    background: linear-gradient(to right, #1E3A8A, #3B82F6); /* Dark to light blue gradient */
+    color: white;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-/* Body Styling */
-body {
-    font-family: 'Courier New', monospace; /* Pixelated font */
-    background-color: #e0f7fa;  /* Light Sky Blue */
-    color: #333;
-    line-height: 1.6;
+/* Quiz Container */
+.quiz-container {
+    max-width: 700px;
+    margin: 50px auto;
     padding: 20px;
-    font-size: 1.1rem;
-}
-
-/* Header Styling */
-header {
+    background: rgba(255, 255, 255, 0.1); /* Transparent white */
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* Soft glowing effect */
     text-align: center;
-    background-color: #80deea;  /* Light Blue */
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    font-family: 'Georgia', serif;
-    color: #00796b;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+/* Heading */
+h1 {
+    font-size: 28px;
+    color: #BBDEFB; /* Light blue */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Navigation Menu */
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    margin-top: 20px;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    font-size: 1.1rem;
-    color: #00796b;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-}
-
-nav ul li a:hover {
-    color: #ff4081;  /* Coquette Pink */
-    transform: scale(1.1);
-}
-
-/* Section Styling */
-section {
-    text-align: center;
-    margin: 40px 0;
-    padding: 30px;
-    background-color: #ffffff;
+/* Question Styling */
+.question {
+    margin: 15px 0;
+    font-size: 18px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2); /* Slightly transparent */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-section h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    font-family: 'Georgia', serif;
-    color: #00796b;
-}
-
-section p {
-    font-size: 1.2rem;
-    color: #555;
-}
-
-/* Pixel Image Styling */
-.pixel-image {
-    width: 150px;
-    margin: 20px;
-    image-rendering: pixelated;
+/* Radio Buttons */
+input[type="radio"] {
+    margin-right: 10px;
 }
 
 /* Button Styling */
 button {
-    background-color: #4caf50;
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    background: #0D47A1; /* Deep blue */
     color: white;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    border: 2px solid #388e3c;
-    border-radius: 10px;
-    cursor: pointer;
-    font-family: 'Courier New', monospace; /* Pixelated font */
-    transition: transform 0.2s ease;
-    margin: 20px 0;
-}
-
-button:hover {
-    transform: scale(1.1);
-    background-color: #388e3c;
-}
-
-/* Points Section */
-#points {
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-/* Footer Styling */
-footer {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 1.1rem;
-    color: #444;
-}
-
-/* Form Styling for Image Upload */
-form {
-    margin-top: 30px;
-}
-
-form input[type="file"] {
-    font-size: 1rem;
-    padding: 10px;
-    background-color: #ffffff;
-    border: 2px solid #00796b;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-form input[type="submit"] {
-    background-color: #ff4081;  /* Coquette Pink */
-    color: white;
-    padding: 12px 25px;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 15px;
-}
-
-form input[type="submit"]:hover {
-    background-color: #d81b60;
-}
-
-/* Chat Button Styling */
-button {
-    background-color: #ff4081;  /* Coquette Pink */
-    color: white;
-    padding: 12px 25px;
-    font-size: 1.2rem;
-    border-radius: 10px;
-    cursor: pointer;
-    font-family: 'Courier New', monospace;
-    transition: transform 0.2s ease;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: #d81b60;
-    transform: scale(1.05);
+    background: #1976D2; /* Lighter blue */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
-    }
-    
-    button {
-        width: 80%;
-        padding: 12px;
-    }
-    
-    section h2 {
-        font-size: 1.6rem;
-    }
+/* Result Box */
+#result {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Decorative Graphic: Floating Circles */
+body::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    filter: blur(10px);
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    bottom: 10%;
+    right: 15%;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    filter: blur(15px);
 }
