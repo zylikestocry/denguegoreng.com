@@ -166,6 +166,9 @@ footer {
 #submit-btn:hover {
     background: #e6b800;
 }
+.hidden {
+    display: none;
+}
 
 /* Result Box */
 #result {
