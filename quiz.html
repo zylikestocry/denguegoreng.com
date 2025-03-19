@@ -1,72 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dengue Prevention Quiz</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>Dengue Prevention Quiz</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="prevention.html">How to Prevent Dengue</a></li>
-                <li><a href="clear-water.html">Clear Stagnant Water</a></li>
-            </ul>
-        </nav>
-    </header>
+def dengue_quiz():
+    questions = [
+        ("What is the primary vector of dengue fever?", "a"),
+        ("Which mosquito species spreads dengue?", "b"),
+        ("What is a common symptom of dengue fever?", "c"),
+        ("Is there a specific antiviral treatment for dengue?", "b"),
+        ("Which of the following is a way to prevent dengue?", "a"),
+        ("Dengue fever is caused by:", "b"),
+        ("Severe dengue can lead to:", "c"),
+        ("Which season is dengue most prevalent in tropical areas?", "a"),
+        ("Dengue vaccine is available for:", "b"),
+        ("How can mosquito breeding be prevented?", "c")
+    ]
+    
+    options = [
+        ["a) Mosquitoes", "b) Bacteria", "c) Viruses"],
+        ["a) Anopheles", "b) Aedes aegypti", "c) Culex"],
+        ["a) Sneezing", "b) Coughing", "c) High fever and joint pain"],
+        ["a) Yes", "b) No"],
+        ["a) Using mosquito repellent", "b) Eating garlic", "c) Taking antibiotics"],
+        ["a) Bacteria", "b) Virus", "c) Fungi"],
+        ["a) Mild fever", "b) Cold symptoms", "c) Organ failure and bleeding"],
+        ["a) Rainy season", "b) Winter", "c) Dry season"],
+        ["a) Everyone", "b) People with prior dengue infection", "c) Only infants"],
+        ["a) Spraying pesticides", "b) Increasing stagnant water", "c) Eliminating standing water"],
+    ]
+    
+    score = 0
+    
+    print("Welcome to the Dengue Awareness Quiz!\n")
+    
+    for i in range(len(questions)):
+        print(f"Q{i+1}: {questions[i][0]}")
+        for option in options[i]:
+            print(option)
+        
+        answer = input("Your answer (a/b/c): ").lower()
+        
+        if answer == questions[i][1]:
+            print("Correct!\n")
+            score += 1
+        else:
+            print("Incorrect!\n")
+    
+    print(f"Your final score is {score}/10")
+    if score > 7:
+        print("Great job! You know a lot about dengue prevention!")
+    elif score > 4:
+        print("Good effort! Learn more to stay safe.")
+    else:
+        print("You should learn more about dengue to protect yourself and others!")
 
-    <section id="quiz">
-        <h2>Test Your Knowledge about Dengue</h2>
-
-        <!-- Question 1 -->
-        <div class="question">
-            <p>1. How is dengue primarily transmitted?</p>
-            <input type="radio" name="q1" value="mosquito" id="q1a">
-            <label for="q1a">Through mosquito bites</label><br>
-            <input type="radio" name="q1" value="direct-contact" id="q1b">
-            <label for="q1b">Through direct contact with an infected person</label><br>
-            <input type="radio" name="q1" value="water" id="q1c">
-            <label for="q1c">Through stagnant water</label><br>
-        </div>
-
-        <!-- Question 2 -->
-        <div class="question">
-            <p>2. What is one of the most common symptoms of dengue?</p>
-            <input type="radio" name="q2" value="fever" id="q2a">
-            <label for="q2a">High fever</label><br>
-            <input type="radio" name="q2" value="headache" id="q2b">
-            <label for="q2b">Headache</label><br>
-            <input type="radio" name="q2" value="skin-rash" id="q2c">
-            <label for="q2c">Skin rash</label><br>
-        </div>
-
-        <!-- Question 3 -->
-        <div class="question">
-            <p>3. What can help prevent mosquito breeding for dengue?</p>
-            <input type="radio" name="q3" value="clean-water" id="q3a">
-            <label for="q3a">Clear stagnant water</label><br>
-            <input type="radio" name="q3" value="mosquito-net" id="q3b">
-            <label for="q3b">Use mosquito nets</label><br>
-            <input type="radio" name="q3" value="both" id="q3c">
-            <label for="q3c">Both</label><br>
-        </div>
-
-        <!-- Submit Button -->
-        <button id="submit-btn">Submit Quiz</button>
-
-        <!-- Result Section -->
-        <div id="result" style="display:none;">
-            <h3>Your Score: <span id="score">0</span>/3</h3>
-        </div>
-    </section>
-
-    <footer>
-        <p>Stay informed and take action against Dengue!</p>
-    </footer>
-
-    <script src="quiz.js"></script>
-</body>
-</html>
+if __name__ == "__main__":
+    dengue_quiz()
