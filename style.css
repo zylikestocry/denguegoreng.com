@@ -1,72 +1,105 @@
-/* Global Styles */
+/* General Styles */
 body {
     font-family: "Times New Roman", Times, serif;
-    background: linear-gradient(to right, #1E3A8A, #3B82F6); 
+    background-color: #1e3a8a; /* Deep Blue */
     color: white;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* Quiz Container */
-.quiz-container {
-    width: 60%;
-    max-width: 600px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.2); 
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     text-align: center;
-    backdrop-filter: blur(5px);
 }
 
-/* Heading */
-h1 {
-    font-size: 28px;
-    color: #BBDEFB;
-}
-
-/* Questions */
-.question {
-    font-size: 18px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-/* Radio Buttons */
-label {
-    display: block;
-    margin: 5px 0;
-}
-
-/* Button */
-button {
-    width: 100%;
-    padding: 12px;
-    font-size: 18px;
-    background: #0D47A1;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #1976D2;
-}
-
-/* Result Box */
-#result {
-    font-size: 20px;
+/* Header */
+header {
+    padding: 20px;
+    background: #0d1b54; /* Dark Blue */
+    font-size: 1.5rem;
     font-weight: bold;
-    margin-top: 20px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Navigation Menu */
+nav {
+    background: #142f86; /* Slightly Lighter Blue */
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: #ffcc00; /* Highlight effect */
+}
+
+/* Navigation Icons */
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Hero Section */
+.hero {
+    margin: 30px auto;
+    width: 80%;
+    padding: 20px;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 600px;
     border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #ffcc00;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #e6b800;
+}
+
+/* Main Content Sections */
+section {
+    background: #19388a;
+    padding: 30px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Footer */
+footer {
+    background: #0d1b54;
+    padding: 15px;
+    font-size: 0.9rem;
+    margin-top: 20px;
 }
