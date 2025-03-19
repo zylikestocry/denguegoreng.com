@@ -1,54 +1,60 @@
-def dengue_quiz():
-    questions = [
-        ("What is the primary vector of dengue fever?", "a"),
-        ("Which mosquito species spreads dengue?", "b"),
-        ("What is a common symptom of dengue fever?", "c"),
-        ("Is there a specific antiviral treatment for dengue?", "b"),
-        ("Which of the following is a way to prevent dengue?", "a"),
-        ("Dengue fever is caused by:", "b"),
-        ("Severe dengue can lead to:", "c"),
-        ("Which season is dengue most prevalent in tropical areas?", "a"),
-        ("Dengue vaccine is available for:", "b"),
-        ("How can mosquito breeding be prevented?", "c")
-    ]
-    
-    options = [
-        ["a) Mosquitoes", "b) Bacteria", "c) Viruses"],
-        ["a) Anopheles", "b) Aedes aegypti", "c) Culex"],
-        ["a) Sneezing", "b) Coughing", "c) High fever and joint pain"],
-        ["a) Yes", "b) No"],
-        ["a) Using mosquito repellent", "b) Eating garlic", "c) Taking antibiotics"],
-        ["a) Bacteria", "b) Virus", "c) Fungi"],
-        ["a) Mild fever", "b) Cold symptoms", "c) Organ failure and bleeding"],
-        ["a) Rainy season", "b) Winter", "c) Dry season"],
-        ["a) Everyone", "b) People with prior dengue infection", "c) Only infants"],
-        ["a) Spraying pesticides", "b) Increasing stagnant water", "c) Eliminating standing water"],
-    ]
-    
-    score = 0
-    
-    print("Welcome to the Dengue Awareness Quiz!\n")
-    
-    for i in range(len(questions)):
-        print(f"Q{i+1}: {questions[i][0]}")
-        for option in options[i]:
-            print(option)
-        
-        answer = input("Your answer (a/b/c): ").lower()
-        
-        if answer == questions[i][1]:
-            print("Correct!\n")
-            score += 1
-        else:
-            print("Incorrect!\n")
-    
-    print(f"Your final score is {score}/10")
-    if score > 7:
-        print("Great job! You know a lot about dengue prevention!")
-    elif score > 4:
-        print("Good effort! Learn more to stay safe.")
-    else:
-        print("You should learn more about dengue to protect yourself and others!")
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dengue Quiz</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        .question { margin: 20px 0; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Dengue Awareness Quiz</h1>
+    <div id="quiz"></div>
+    <button onclick="submitQuiz()">Submit</button>
+    <h2 id="result"></h2>
 
-if __name__ == "__main__":
-    dengue_quiz()
+    <script>
+        const questions = [
+            { q: "What is the primary vector of dengue fever?", options: ["Mosquitoes", "Bacteria", "Viruses"], answer: 0 },
+            { q: "Which mosquito species spreads dengue?", options: ["Anopheles", "Aedes aegypti", "Culex"], answer: 1 },
+            { q: "What is a common symptom of dengue fever?", options: ["Sneezing", "Coughing", "High fever and joint pain"], answer: 2 },
+            { q: "Is there a specific antiviral treatment for dengue?", options: ["Yes", "No"], answer: 1 },
+            { q: "Which of the following is a way to prevent dengue?", options: ["Using mosquito repellent", "Eating garlic", "Taking antibiotics"], answer: 0 },
+            { q: "Dengue fever is caused by:", options: ["Bacteria", "Virus", "Fungi"], answer: 1 },
+            { q: "Severe dengue can lead to:", options: ["Mild fever", "Cold symptoms", "Organ failure and bleeding"], answer: 2 },
+            { q: "Which season is dengue most prevalent in tropical areas?", options: ["Rainy season", "Winter", "Dry season"], answer: 0 },
+            { q: "Dengue vaccine is available for:", options: ["Everyone", "People with prior dengue infection", "Only infants"], answer: 1 },
+            { q: "How can mosquito breeding be prevented?", options: ["Spraying pesticides", "Increasing stagnant water", "Eliminating standing water"], answer: 2 }
+        ];
+
+        function loadQuiz() {
+            let quizDiv = document.getElementById("quiz");
+            quizDiv.innerHTML = "";
+            questions.forEach((q, index) => {
+                let questionHTML = `<div class='question'><p>${index + 1}. ${q.q}</p>`;
+                q.options.forEach((option, i) => {
+                    questionHTML += `<input type='radio' name='q${index}' value='${i}'> ${option} <br>`;
+                });
+                questionHTML += "</div>";
+                quizDiv.innerHTML += questionHTML;
+            });
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            questions.forEach((q, index) => {
+                let selected = document.querySelector(`input[name='q${index}']:checked`);
+                if (selected && parseInt(selected.value) === q.answer) {
+                    score++;
+                }
+            });
+            document.getElementById("result").innerText = `Your score: ${score}/10`;
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>
