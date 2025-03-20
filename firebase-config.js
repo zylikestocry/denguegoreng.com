@@ -1,4 +1,4 @@
-// ✅ Load Firebase Configuration
+// ✅ Ensure Firebase initializes correctly
 const firebaseConfig = {
     apiKey: "AIzaSyBioGgdFP3CaadF9iW0EXBvHwMG1__iKr4",
     authDomain: "dengue-454102.firebaseapp.com",
@@ -8,43 +8,38 @@ const firebaseConfig = {
     appId: "1:989474939574:web:e1035d734e329efc997c17"
 };
 
-// ✅ Initialize Firebase if not already initialized
+// ✅ Only initialize Firebase if it hasn’t been initialized yet
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
+} else {
+    firebase.app(); // ✅ Use the existing app if already initialized
 }
 
+// ✅ Assign Firebase services
 const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
 const storage = firebase.storage();
 
-// ✅ Listen for auth state changes (Ensures UI updates correctly)
+// ✅ Ensure Firebase Auth state is correctly managed
 auth.onAuthStateChanged(user => {
-    if (user) {
-        document.getElementById("user-info").innerText = `Signed in as: ${user.displayName}`;
-        document.getElementById("google-signin").style.display = "none";
-        document.getElementById("signout").style.display = "block";
-    } else {
-        document.getElementById("user-info").innerText = "Not signed in";
-        document.getElementById("google-signin").style.display = "block";
-        document.getElementById("signout").style.display = "none";
+    if (document.getElementById("user-info")) {
+        document.getElementById("user-info").innerText = user
+            ? `Signed in as: ${user.displayName}`
+            : "Not signed in";
     }
 });
 
-// ✅ Sign in function
-function signIn() {
+// ✅ Expose functions globally
+window.signIn = function () {
     auth.signInWithPopup(provider)
         .then(result => console.log("Signed in:", result.user.displayName))
         .catch(error => console.error("Sign-in error:", error));
-}
+};
 
-// ✅ Sign out function
-function signOutUser() {
+window.signOutUser = function () {
     auth.signOut()
         .then(() => console.log("User signed out"))
         .catch(error => console.error("Sign-out error:", error));
-}
+};
 
-// ✅ Expose functions to HTML buttons
-window.signIn = signIn;
-window.signOutUser = signOutUser;
 window.storage = storage;
