@@ -18,7 +18,14 @@
         button:hover { background-color: #218838; }
     </style>
 </head>
-<body>
+<<!-- Google Sign-In Button -->
+<button id="google-signin" onclick="signIn()">Sign in with Google</button>
+<p id="user-info"></p>
+<button id="signout" onclick="signOutUser()">Sign Out</button>
+
+<!-- Firebase Auth Script -->
+<script src="firebase-config.js"></script>
+>
 
     <h1>Clear Stagnant Water</h1>
     <p>Click the button below to report stagnant water removal.</p>
