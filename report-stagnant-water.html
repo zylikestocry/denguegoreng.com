@@ -23,7 +23,6 @@
         <h2>Submit Your Report</h2>
         <p>Upload photos of stagnant water and its removal.</p>
 
-        <!-- ✅ Image Upload Form (Linked to Google Forms) -->
         <form id="uploadForm" action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" enctype="multipart/form-data">
             <label for="beforeImage">Before (Stagnant Water):</label><br>
             <input type="file" id="beforeImage" name="entry.YOUR_BEFORE_FIELD_ID" accept="image/*" required><br><br>
@@ -31,7 +30,7 @@
             <label for="afterImage">After (Cleared Water):</label><br>
             <input type="file" id="afterImage" name="entry.YOUR_AFTER_FIELD_ID" accept="image/*" required><br><br>
 
-            <!-- ✅ Hidden Input to Store User ID -->
+            <!-- Hidden Input to Store User ID -->
             <input type="hidden" id="userIDField" name="entry.YOUR_USERID_FIELD_ID">
 
             <button type="submit">Submit</button>
@@ -43,16 +42,7 @@
     </footer>
 
     <script>
-        function setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                let date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + value + expires + "; path=/";
-        }
-
+        // Function to retrieve cookies
         function getCookie(name) {
             let nameEQ = name + "=";
             let ca = document.cookie.split(';');
@@ -63,19 +53,18 @@
             return null;
         }
 
+        // Check and apply the user ID
         document.addEventListener("DOMContentLoaded", function() {
             let userID = getCookie("userID");
             
-            // ✅ If userID doesn't exist, create and store it
             if (!userID) {
+                // If no userID is found, generate a new one (to prevent issues)
                 userID = "user_" + Math.floor(Math.random() * 999999);
-                setCookie("userID", userID, 365); // Store for 1 year
+                document.cookie = `userID=${userID}; path=/; max-age=${365 * 24 * 60 * 60}`;
             }
 
-            // ✅ Set userID in hidden form field
-            document.getElementById("userIDField").value = userID;
-
             console.log("User ID:", userID);
+            document.getElementById("userIDField").value = userID;
         });
     </script>
 
