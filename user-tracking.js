@@ -1,3 +1,4 @@
+// Function to set a cookie
 function setCookie(name, value, days) {
     let expires = "";
     if (days) {
@@ -8,6 +9,7 @@ function setCookie(name, value, days) {
     document.cookie = name + "=" + value + expires + "; path=/";
 }
 
+// Function to get a cookie
 function getCookie(name) {
     let nameEQ = name + "=";
     let ca = document.cookie.split(';');
@@ -18,11 +20,11 @@ function getCookie(name) {
     return null;
 }
 
-// Check if user ID exists, otherwise generate one
-let userID = getCookie("userID");
-if (!userID) {
-    userID = "user_" + Math.floor(Math.random() * 999999);
+// Check if userID exists; if not, generate and store it
+if (!getCookie("userID")) {
+    let userID = "user_" + Math.floor(Math.random() * 999999);
     setCookie("userID", userID, 365); // Store for 1 year
 }
 
-console.log("User ID:", userID);
+console.log("User ID:", getCookie("userID"));
+
