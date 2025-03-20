@@ -1,11 +1,11 @@
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyC8sxEJKbDnBBWtnbwBHB0gEIrNbf0-kb8",
-    authDomain: "dengue-stagnant-water.firebaseapp.com",
-    projectId: "dengue-stagnant-water",
-    storageBucket: "dengue-stagnant-water.appspot.com",
-    messagingSenderId: "606657028114",
-    appId: "1:606657028114:web:9331950cc8e291a198f8cb"
+    apiKey: "AIzaSyBioGgdFP3CaadF9iW0EXBvHwMG1__iKr4",
+    authDomain: "dengue-454102.firebaseapp.com",
+    projectId: "dengue-454102",
+    storageBucket: "dengue-454102.firebasestorage.app",
+    messagingSenderId: "989474939574",
+    appId: "1:989474939574:web:e1035d734e329efc997c17"
 };
 
 // Initialize Firebase
