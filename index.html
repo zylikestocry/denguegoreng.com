@@ -59,5 +59,48 @@
     </footer>
     <script src="user-tracking.js"></script>
 
-</body>
+</<!-- Google Sign-In Button -->
+<button id="google-signin">Sign in with Google</button>
+<p id="user-info"></p>
+
+<!-- Firebase SDK -->
+<script type="module">
+  // Import Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+  // 🔹 Replace with your Firebase config
+  const firebaseConfig = {
+    apiKey: "YOUR_FIREBASE_API_KEY",
+    authDomain: "YOUR_FIREBASE_AUTH_DOMAIN",
+    projectId: "YOUR_FIREBASE_PROJECT_ID"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+
+  // Sign In
+  document.getElementById("google-signin").addEventListener("click", () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        document.getElementById("user-info").innerHTML = `Signed in as: ${user.email}`;
+        localStorage.setItem("userEmail", user.email); // Save email for tracking uploads
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+
+  // Sign Out (optional)
+  document.getElementById("google-signin").addEventListener("dblclick", () => {
+    signOut(auth).then(() => {
+      document.getElementById("user-info").innerHTML = "Signed out";
+      localStorage.removeItem("userEmail");
+    });
+  });
+</script>
+>
 </html>
