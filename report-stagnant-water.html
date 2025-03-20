@@ -33,7 +33,7 @@
             <!-- Hidden Input to Store User ID -->
             <input type="hidden" id="userIDField" name="entry.YOUR_USERID_FIELD_ID">
 
-            <button type="submit">Submit</button>
+            <button type="submit" id="submitButton" disabled>Submit</button>
         </form>
     </section>
 
@@ -41,30 +41,34 @@
         <p>Stay informed and take action. Together, we can fight dengue!</p>
     </footer>
 
+    <!-- Load Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+    <!-- Load Firebase Configuration -->
+    <script src="firebase-config.js"></script>
+
     <script>
-        // Function to retrieve cookies
-        function getCookie(name) {
-            let nameEQ = name + "=";
-            let ca = document.cookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i].trim();
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+                .then(() => {
+                    firebase.auth().onAuthStateChanged(user => {
+                        const userIDField = document.getElementById("userIDField");
+                        const submitButton = document.getElementById("submitButton");
 
-        // Check and apply the user ID
-        document.addEventListener("DOMContentLoaded", function() {
-            let userID = getCookie("userID");
-            
-            if (!userID) {
-                // If no userID is found, generate a new one (to prevent issues)
-                userID = "user_" + Math.floor(Math.random() * 999999);
-                document.cookie = `userID=${userID}; path=/; max-age=${365 * 24 * 60 * 60}`;
-            }
-
-            console.log("User ID:", userID);
-            document.getElementById("userIDField").value = userID;
+                        if (user) {
+                            console.log("User signed in:", user.uid);
+                            userIDField.value = user.uid;
+                            submitButton.disabled = false; // Enable form submission
+                        } else {
+                            console.warn("No user signed in");
+                            userIDField.value = "";
+                            submitButton.disabled = true; // Prevent submission
+                            alert("You must be signed in to submit a report.");
+                        }
+                    });
+                })
+                .catch(error => console.error("Auth persistence error:", error));
         });
     </script>
 
