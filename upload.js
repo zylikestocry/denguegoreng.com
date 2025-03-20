@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const beforeFile = beforeImageInput.files[0];
         const afterFile = afterImageInput.files[0];
 
-        const beforeRef = firebase.storage().ref(`reports/${userId}/before_${Date.now()}.jpg`);
-        const afterRef = firebase.storage().ref(`reports/${userId}/after_${Date.now()}.jpg`);
+        const beforeRef = firebase.storage().ref(`user_uploads/${userId}/before_${Date.now()}.jpg`);
+        const afterRef = firebase.storage().ref(`user_uploads/${userId}/after_${Date.now()}.jpg`);
 
         Promise.all([
             beforeRef.put(beforeFile),
