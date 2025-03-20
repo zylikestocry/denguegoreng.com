@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
         <h1>Dengue Prevention Awareness</h1>
         <nav>
@@ -20,76 +20,87 @@
         </nav>
     </header>
 
-    <section id="google-auth">
-        <h2>Login to Track Your Contributions</h2>
-        <button id="google-signin">Sign in with Google</button>
-        <button id="google-signout" style="display: none;">Sign Out</button>
-        <p id="user-info"></p>
+    <section id="info">
+        <h2>What is Dengue?</h2>
+        <p>Dengue is a viral disease caused by the dengue virus, which is primarily transmitted to humans through the bite of infected female Aedes mosquitoes. The most common species responsible for spreading dengue are <i>Aedes aegypti</i> and <i>Aedes albopictus</i>. These mosquitoes typically thrive in tropical and subtropical regions, where warm and humid conditions are ideal for breeding.</p>
+
+        <p>The symptoms of dengue begin around 4-10 days after being bitten by an infected mosquito and can include a sudden high fever, severe headaches, pain behind the eyes, joint pain, muscle and bone pain (which gives the condition its nickname "breakbone fever"), rash, and nausea. In some cases, the disease can lead to complications such as dengue hemorrhagic fever (DHF) or dengue shock syndrome (DSS), both of which can be fatal if not treated promptly.</p>
+
+        <p><img src="https://www.techexplorist.com/wp-content/uploads/2018/12/Dengue-Virus.jpg" alt="Dengue Virus Magnification" class="responsive-image"></p>
+
+        <h3>How Does Dengue Spread?</h3>
+        <p>Dengue spreads when a mosquito becomes infected with the dengue virus after biting a person already infected with the virus. The mosquito then transmits the virus to healthy people through subsequent bites. It's important to note that dengue cannot be spread directly from person to person, so controlling mosquito populations is the key to reducing transmission.</p>
+
+        <h3>Why Is Dengue Dangerous?</h3>
+        <p>Dengue poses a serious health risk, particularly in regions where the disease is endemic. In some cases, the infection can cause bleeding, blood plasma leakage, and organ failure, especially if it progresses to severe forms like DHF. According to the World Health Organization (WHO), an estimated 50 million to 100 million cases of dengue occur worldwide each year, and nearly half of the world's population is at risk of contracting the virus.</p>
+    </section>
+
+    <section id="stats">
+        <h2>Dengue Cases in Recent Years</h2>
+        <p>The incidence of dengue has been rising rapidly in recent decades, largely due to urbanization, population growth, and changes in climate. The spread of Aedes mosquitoes to new regions has exacerbated the situation, making dengue a global health issue.</p>
+
+        <p>In 2023, there were over 5 million reported cases of dengue globally, with the highest rates seen in Southeast Asia, Latin America, and parts of Africa. The number of cases can fluctuate yearly, depending on various factors such as rainfall, temperature, and mosquito control measures. For instance, during periods of heavy rainfall, stagnant water collects in containers, tires, and other objects, creating ideal breeding grounds for mosquitoes. This leads to an increase in mosquito populations, and subsequently, a rise in dengue cases.</p>
+
+        <p>According to data from the World Health Organization (WHO) and regional health authorities, some countries in Southeast Asia, such as the Philippines and Thailand, experience periodic dengue outbreaks, with hundreds of thousands of cases reported during peak seasons. In Latin America, countries like Brazil and Mexico have seen significant increases in dengue cases, especially during the rainy season.</p>
+
+        <p><img src="https://ourworldindata.org/grapher/exports/dengue-incidence.png?v=1" alt="Dengue Statistics Chart" class="responsive-image"></p>
+
+        <h3>Geographic Distribution of Dengue</h3>
+        <p>While dengue is most common in tropical regions, it has expanded into temperate zones due to changing environmental conditions. Climate change, urbanization, and increased international travel are some of the main contributing factors to the spread of the disease. According to the Centers for Disease Control and Prevention (CDC), dengue is now endemic in more than 100 countries around the world.</p>
+
+        <h3>Why We Need to Act Now</h3>
+        <p>As the global population continues to grow and cities expand, the risk of dengue outbreaks increases. It's crucial for both governments and individuals to take action to control mosquito populations and prevent dengue transmission. This includes eliminating mosquito breeding sites, using mosquito nets, applying insect repellents, and promoting public health education.</p>
+
+        <p>With the right strategies and awareness, we can reduce the number of dengue cases and ultimately save lives. However, we need everyone’s involvement in this fight against dengue. Let’s work together to make our communities healthier and safer.</p>
     </section>
 
     <footer>
         <p>Stay informed and take action. Together, we can fight dengue!</p>
     </footer>
+    <script src="user-tracking.js"></script>
 
-    <!-- Firebase SDK -->
-    <script type="module">
-        // Import Firebase
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } 
-        from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+</<!-- Google Sign-In Button -->
+<button id="google-signin">Sign in with Google</button>
+<p id="user-info"></p>
 
-        // 🔹 Replace with your Firebase config
-        const firebaseConfig = {
-            apiKey: "AIzaSyC8sxEJKbDnBBWtnbwBHB0gEIrNbf0-kb8",
-            authDomain: "dengue-stagnant-water.firebaseapp.com",
-            projectId: "dengue-stagnant-water"
-        };
+<!-- Firebase SDK -->
+<script type="module">
+  // Import Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
+  // 🔹 Replace with your Firebase config
+  const firebaseConfig = {
+    apiKey: "YOUR_FIREBASE_API_KEY",
+    authDomain: "YOUR_FIREBASE_AUTH_DOMAIN",
+    projectId: "YOUR_FIREBASE_PROJECT_ID"
+  };
 
-        // 🔹 Sign In
-        document.getElementById("google-signin").addEventListener("click", () => {
-            signInWithPopup(auth, provider)
-                .then((result) => {
-                    const user = result.user;
-                    document.getElementById("user-info").innerText = `Signed in as: ${user.email}`;
-                    localStorage.setItem("userEmail", user.email); // Save email for tracking uploads
-                    document.getElementById("google-signin").style.display = "none";
-                    document.getElementById("google-signout").style.display = "block";
-                })
-                .catch((error) => {
-                    console.error("Sign-in error:", error);
-                });
-        });
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
 
-        // 🔹 Sign Out
-        document.getElementById("google-signout").addEventListener("click", () => {
-            signOut(auth).then(() => {
-                document.getElementById("user-info").innerText = "Signed out";
-                localStorage.removeItem("userEmail");
-                document.getElementById("google-signin").style.display = "block";
-                document.getElementById("google-signout").style.display = "none";
-            }).catch((error) => {
-                console.error("Sign-out error:", error);
-            });
-        });
+  // Sign In
+  document.getElementById("google-signin").addEventListener("click", () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        document.getElementById("user-info").innerHTML = Signed in as: ${user.email};
+        localStorage.setItem("userEmail", user.email); // Save email for tracking uploads
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
 
-        // 🔹 Track Authentication State
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                document.getElementById("user-info").innerText = `Signed in as: ${user.email}`;
-                document.getElementById("google-signin").style.display = "none";
-                document.getElementById("google-signout").style.display = "block";
-            } else {
-                document.getElementById("user-info").innerText = "";
-                document.getElementById("google-signin").style.display = "block";
-                document.getElementById("google-signout").style.display = "none";
-            }
-        });
-    </script>
-
-</body>
+  // Sign Out (optional)
+  document.getElementById("google-signin").addEventListener("dblclick", () => {
+    signOut(auth).then(() => {
+      document.getElementById("user-info").innerHTML = "Signed out";
+      localStorage.removeItem("userEmail");
+    });
+  });
+</script>
+>
 </html>
