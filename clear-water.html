@@ -27,45 +27,46 @@
         <button>Report Stagnant Water</button>
     </a>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js"></script>
+    <!-- Firebase SDKs (Make sure these load before firebase-config.js) -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
 
     <!-- Firebase Configuration -->
     <script src="firebase-config.js"></script>
 
+    <!-- User Tracking Script -->
+    <script src="user-tracking.js"></script>
+
     <script>
-        window.onload = function () {
-            function setCookie(name, value, days) {
-                let expires = "";
-                if (days) {
-                    let date = new Date();
-                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                    expires = "; expires=" + date.toUTCString();
-                }
-                document.cookie = name + "=" + value + expires + "; path=/";
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
             }
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
 
-            function getCookie(name) {
-                let nameEQ = name + "=";
-                let ca = document.cookie.split(';');
-                for (let i = 0; i < ca.length; i++) {
-                    let c = ca[i].trim();
-                    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-                }
-                return null;
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i].trim();
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
             }
+            return null;
+        }
 
-            // Check if user ID exists, otherwise generate one
-            let userID = getCookie("userID");
-            if (!userID) {
-                userID = "user_" + Math.floor(Math.random() * 999999);
-                setCookie("userID", userID, 365); // Store for 1 year
-            }
+        // Check if user ID exists, otherwise generate one
+        let userID = getCookie("userID");
+        if (!userID) {
+            userID = "user_" + Math.floor(Math.random() * 999999);
+            setCookie("userID", userID, 365); // Store for 1 year
+        }
 
-            console.log("User ID:", userID);
-        };
+        console.log("User ID:", userID);
     </script>
 
 </body>
