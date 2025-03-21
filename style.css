@@ -1,133 +1,117 @@
 <link rel="stylesheet" href="style.css">
-/* Set a global font with a bubbly feel */
+/* 🌿 Bubbly Pastel Card Game Theme */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');body {
-
-font-family: 'Pacifico', cursive;
-
-background-color: #f9f9f9; /* Soft pastel background /
-
-color: #333; / Dark text for readability /
-
-margin: 0;
-
-padding: 0;
-
-overflow-x: hidden; / Prevent horizontal scroll */
-
-}/* Card Container /
-
-.card {
-
-background-color: #ffd1dc; / Light pink for card background /
-
-border-radius: 15px;
-
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
-padding: 20px;
-
-margin: 20px;
-
-transition: transform 0.2s, box-shadow 0.2s; / Animation on hover */
-
-}/* Card Hover Effect /
-
-.card:hover {
-
-transform: scale(1.05); / Bubbles up effect */
-
-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-
-}/* Header Styling /
-
-.header {
-
-text-align: center;
-
-padding: 50px 0;
-
-background: linear-gradient(135deg, #a0e7e8, #b9fbc0); / Pastel gradient /
-
-color: #ff6b6b; / Soft red for contrast */
-
-}/* Game Title Animation /
-
-.header h1 {
-
-font-size: 3em;
-
-animation: bounce 1s infinite; / Bouncing animation */
-
-}/* Key Frame for Bounce */
-
-@keyframes bounce {
-
-0%, 20%, 50%, 80%, 100% {
-
-transform: translateY(0);
-
+body {
+    font-family: 'Fredoka', sans-serif;
+    background-color: #DFFFD6; /* Soft pastel green */
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-40% {
-
-transform: translateY(-20px);
-
+/* Header */
+header {
+    background-color: #A7E8BD; /* Light mint green */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    width: 80%;
+    max-width: 900px;
 }
 
-60% {
-
-transform: translateY(-10px);
-
+/* Title */
+h1 {
+    color: #206A5D; /* Deeper green */
+    font-size: 2.8rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-}/* Buttons Styling /
-
-.button {
-
-background-color: #ff6b6b; / Soft red /
-
-color: white;
-
-border: none;
-
-border-radius: 25px;
-
-padding: 15px 30px;
-
-font-size: 1.2em;
-
-cursor: pointer;
-
-transition: background-color 0.3s, transform 0.3s; / Animation effects */
-
-}/* Button Hover Effect /
-
-.button:hover {
-
-background-color: #ff3d3d; / Darker red on hover /
-
-transform: scale(1.05); / Bubbles up effect */
-
-}/* Responsive Design /
-
-@media (max-width: 768px) {
-
-.header h1 {
-
-font-size: 2.5em; / Adjust header size for smaller screens */
-
-}.card {
-
-margin: 10px; /* Smaller margin for cards on small screens */
-
-}.button {
-
-font-size: 1em; /* Smaller button text */
-
+/* Centering Content */
+.container {
+    width: 80%;
+    margin: 0 auto;
 }
 
+/* Links */
+a {
+    color: #206A5D;
+    text-decoration: none;
+    font-weight: bold;
 }
+
+a:hover {
+    color: #FF91A4;
+    text-decoration: underline;
+}
+
+/* Buttons */
+button, .google-signin {
+    background-color: #FFB6C1; /* Soft pink */
+    color: white;
+    padding: 14px 28px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+    display: inline-block;
+    border: none;
+    box-shadow: 3px 3px 0px #E68A99;
+    margin: 15px auto;
+}
+
+button:hover, .google-signin:hover {
+    background-color: #FF91A4;
+    transform: scale(1.05);
+}
+
+/* Google Sign-in */
+.google-signin {
+    width: 260px;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Upload Box */
+.upload-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin-top: 20px;
+    border: 3px solid #83C5BE;
+}
+
+/* Input fields */
+input[type="file"] {
+    margin-top: 15px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px dashed #83C5BE;
+    background-color: #FFF7F8;
+}
+
+/* Text Content */
+.content {
+    text-align: justify;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+/* Footer */
+footer {
+    background-color: #A7E8BD;
+    padding: 10px;
+    color: #206A5D;
+    font-weight: bold;
+    border-radius: 0 0 15px 15px;
+}
+
 
 
 
