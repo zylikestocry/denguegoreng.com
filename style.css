@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="style.css">
-/* 🎨 Pastel Green Fun Theme - Perfect for a Card Game */
+/* 🌿 Bubbly Pastel Card Game Theme */
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
 
@@ -12,36 +12,68 @@ body {
     padding: 0;
 }
 
-/* Header Styling */
+/* Header */
 header {
     background-color: #A7E8BD; /* Light mint green */
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    width: 90%;
+    max-width: 900px;
 }
 
+/* Title */
 h1 {
-    color: #206A5D; /* Deeper green for contrast */
+    color: #206A5D; /* Deeper green */
     font-size: 3rem;
-    text-shadow: 2px 2px 0px #83C5BE;
+    text-shadow: 3px 3px 0px #83C5BE;
+}
+
+/* Centering Content */
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Links */
+a {
+    color: #206A5D;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #FF91A4;
+    text-decoration: underline;
 }
 
 /* Buttons */
-button {
-    background-color: #FFB6C1; /* Soft pink for fun contrast */
+button, .google-signin {
+    background-color: #FFB6C1; /* Soft pink */
     color: white;
     padding: 12px 24px;
-    border: none;
     font-size: 1.3rem;
     border-radius: 15px;
     cursor: pointer;
     transition: all 0.3s;
     font-weight: bold;
+    display: inline-block;
+    border: none;
     box-shadow: 3px 3px 0px #E68A99;
 }
 
-button:hover {
+button:hover, .google-signin:hover {
     background-color: #FF91A4;
     transform: scale(1.05);
+}
+
+/* Google Sign-in */
+.google-signin {
+    display: block;
+    width: 250px;
+    margin: 20px auto;
+    text-align: center;
 }
 
 /* Upload Box */
@@ -52,7 +84,7 @@ button:hover {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
     display: inline-block;
     margin-top: 20px;
-    border: 3px solid #83C5BE; /* Soft teal */
+    border: 3px solid #83C5BE;
 }
 
 /* Input fields */
@@ -70,5 +102,7 @@ footer {
     padding: 10px;
     color: #206A5D;
     font-weight: bold;
+    border-radius: 0 0 15px 15px;
 }
+
 
