@@ -1,108 +1,52 @@
 <link rel="stylesheet" href="style.css">
-/* 🌿 Bubbly Pastel Card Game Theme */
+/* Updated styles with more inclusive pastel colors and a properly loading bubbly font */
 
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap');
 
 body {
-    font-family: 'Fredoka', sans-serif;
-    background-color: #DFFFD6; /* Soft pastel green */
-    color: #333;
+    font-family: 'Baloo 2', cursive;
+    background: linear-gradient(135deg, #C8E6C9, #BBDEFB, #D1C4E9, #FFE082);
+    color: #444;
     text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-/* Header */
-header {
-    background-color: #A7E8BD; /* Light mint green */
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-    margin: 20px auto;
-    width: 90%;
-    max-width: 900px;
 }
 
-/* Title */
-h1 {
-    color: #206A5D; /* Deeper green */
-    font-size: 3rem;
-    text-shadow: 3px 3px 0px #83C5BE;
+h1, h2, h3 {
+    font-weight: 700;
+    color: #222;
 }
 
-/* Centering Content */
 .container {
-    width: 80%;
-    margin: 0 auto;
+    max-width: 900px;
+    margin: auto;
+    background: #FFF8E1;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Links */
-a {
-    color: #206A5D;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-a:hover {
-    color: #FF91A4;
-    text-decoration: underline;
-}
-
-/* Buttons */
-button, .google-signin {
-    background-color: #FFB6C1; /* Soft pink */
-    color: white;
+.button {
+    display: inline-block;
     padding: 12px 24px;
-    font-size: 1.3rem;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: bold;
-    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    background: #64B5F6;
     border: none;
-    box-shadow: 3px 3px 0px #E68A99;
+    border-radius: 30px;
+    transition: all 0.3s;
+    cursor: pointer;
 }
 
-button:hover, .google-signin:hover {
-    background-color: #FF91A4;
-    transform: scale(1.05);
+.button:hover {
+    background: #42A5F5;
+    transform: scale(1.1);
 }
 
-/* Google Sign-in */
-.google-signin {
-    display: block;
-    width: 250px;
-    margin: 20px auto;
-    text-align: center;
-}
-
-/* Upload Box */
-.upload-container {
-    background: white;
-    padding: 25px;
+.card {
+    background: #E1F5FE;
+    padding: 15px;
     border-radius: 15px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-    display: inline-block;
-    margin-top: 20px;
-    border: 3px solid #83C5BE;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
-
-/* Input fields */
-input[type="file"] {
-    margin-top: 15px;
-    padding: 8px;
-    border-radius: 8px;
-    border: 2px dashed #83C5BE;
-    background-color: #FFF7F8;
-}
-
-/* Footer */
-footer {
-    background-color: #A7E8BD;
-    padding: 10px;
-    color: #206A5D;
-    font-weight: bold;
-    border-radius: 0 0 15px 15px;
-}
-
-
