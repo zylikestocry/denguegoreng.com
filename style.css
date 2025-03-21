@@ -1,52 +1,133 @@
 <link rel="stylesheet" href="style.css">
-/* Updated styles with more inclusive pastel colors and a properly loading bubbly font */
+/* Set a global font with a bubbly feel */
 
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');body {
 
-body {
-    font-family: 'Baloo 2', cursive;
-    background: linear-gradient(135deg, #C8E6C9, #BBDEFB, #D1C4E9, #FFE082);
-    color: #444;
-    text-align: center;
-    padding: 20px;
-}
+font-family: 'Pacifico', cursive;
 
-h1, h2, h3 {
-    font-weight: 700;
-    color: #222;
-}
+background-color: #f9f9f9; /* Soft pastel background /
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    background: #FFF8E1;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-}
+color: #333; / Dark text for readability /
 
-.button {
-    display: inline-block;
-    padding: 12px 24px;
-    font-size: 18px;
-    font-weight: 700;
-    color: white;
-    background: #64B5F6;
-    border: none;
-    border-radius: 30px;
-    transition: all 0.3s;
-    cursor: pointer;
-}
+margin: 0;
 
-.button:hover {
-    background: #42A5F5;
-    transform: scale(1.1);
-}
+padding: 0;
+
+overflow-x: hidden; / Prevent horizontal scroll */
+
+}/* Card Container /
 
 .card {
-    background: #E1F5FE;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+
+background-color: #ffd1dc; / Light pink for card background /
+
+border-radius: 15px;
+
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+padding: 20px;
+
+margin: 20px;
+
+transition: transform 0.2s, box-shadow 0.2s; / Animation on hover */
+
+}/* Card Hover Effect /
+
+.card:hover {
+
+transform: scale(1.05); / Bubbles up effect */
+
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+}/* Header Styling /
+
+.header {
+
+text-align: center;
+
+padding: 50px 0;
+
+background: linear-gradient(135deg, #a0e7e8, #b9fbc0); / Pastel gradient /
+
+color: #ff6b6b; / Soft red for contrast */
+
+}/* Game Title Animation /
+
+.header h1 {
+
+font-size: 3em;
+
+animation: bounce 1s infinite; / Bouncing animation */
+
+}/* Key Frame for Bounce */
+
+@keyframes bounce {
+
+0%, 20%, 50%, 80%, 100% {
+
+transform: translateY(0);
+
 }
+
+40% {
+
+transform: translateY(-20px);
+
+}
+
+60% {
+
+transform: translateY(-10px);
+
+}
+
+}/* Buttons Styling /
+
+.button {
+
+background-color: #ff6b6b; / Soft red /
+
+color: white;
+
+border: none;
+
+border-radius: 25px;
+
+padding: 15px 30px;
+
+font-size: 1.2em;
+
+cursor: pointer;
+
+transition: background-color 0.3s, transform 0.3s; / Animation effects */
+
+}/* Button Hover Effect /
+
+.button:hover {
+
+background-color: #ff3d3d; / Darker red on hover /
+
+transform: scale(1.05); / Bubbles up effect */
+
+}/* Responsive Design /
+
+@media (max-width: 768px) {
+
+.header h1 {
+
+font-size: 2.5em; / Adjust header size for smaller screens */
+
+}.card {
+
+margin: 10px; /* Smaller margin for cards on small screens */
+
+}.button {
+
+font-size: 1em; /* Smaller button text */
+
+}
+
+}
+
+
+
