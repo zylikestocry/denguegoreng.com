@@ -102,5 +102,34 @@
         });
       });
     </script>
+        <script>
+    // Initialize Firebase Storage
+    const storage = firebase.storage();
+
+    async function getImageURLs(userId) {
+        try {
+            const beforeRef = storage.ref(`user_uploads/${userId}/before.jpg`);
+            const afterRef = storage.ref(`user_uploads/${userId}/after.jpg`);
+
+            const beforeURL = await beforeRef.getDownloadURL();
+            const afterURL = await afterRef.getDownloadURL();
+
+            console.log("Before Image URL:", beforeURL);
+            console.log("After Image URL:", afterURL);
+
+            return { beforeURL, afterURL };
+        } catch (error) {
+            console.error("Error retrieving images:", error);
+        }
+    }
+
+    // Example usage: Replace 'USER_ID' with actual user ID
+    getImageURLs("USER_ID").then(urls => {
+        if (urls) {
+            console.log("Retrieved URLs:", urls);
+        }
+    });
+</script>
+
 </body>
 </html>
