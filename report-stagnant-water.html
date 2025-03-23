@@ -53,3 +53,19 @@
     <script src="upload.js"></script>
 </body>
 </html>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const submitButton = document.getElementById("submitBtn");
+
+    if (submitButton) {
+        console.log("Button found!");
+        submitButton.addEventListener("click", function () {
+            console.log("Submit button clicked!");
+        });
+    } else {
+        console.log("Submit button NOT found!");
+    }
+});
+</script>
+
