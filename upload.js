@@ -1,34 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("✅ upload.js loaded");
+
     const beforeImageInput = document.getElementById("beforeImage");
     const afterImageInput = document.getElementById("afterImage");
     const uploadStatus = document.getElementById("uploadStatus");
-    const submitButton = document.getElementById("submitButton");
+    const submitButton = document.getElementById("submitBtn");
 
-    // Ensure the button exists before adding an event listener
-    if (!submitButton) {
-        console.error("Error: Submit button not found.");
+    if (!beforeImageInput || !afterImageInput || !submitButton) {
+        console.error("❌ Missing input elements.");
         return;
     }
 
     function uploadFiles() {
+        console.log("✅ uploadFiles() triggered");
+
         if (!beforeImageInput.files.length || !afterImageInput.files.length) {
             uploadStatus.innerText = "Please select both images.";
+            console.warn("⚠️ No images selected.");
             return;
         }
 
-        // Ensure Firebase auth is initialized
+        if (!firebase.apps.length) {
+            console.error("❌ Firebase is not initialized.");
+            uploadStatus.innerText = "Error: Firebase not loaded.";
+            return;
+        }
+
         const user = firebase.auth().currentUser;
         if (!user) {
             uploadStatus.innerText = "Please sign in first.";
-            console.error("User not authenticated.");
+            console.error("❌ User is not signed in.");
             return;
         }
 
         const userId = user.uid;
         const beforeFile = beforeImageInput.files[0];
         const afterFile = afterImageInput.files[0];
-
         const timestamp = Date.now();
+
+        console.log(`Uploading for user ${userId}...`);
+
         const beforeRef = firebase.storage().ref(`user_uploads/${userId}/before_${timestamp}.jpg`);
         const afterRef = firebase.storage().ref(`user_uploads/${userId}/after_${timestamp}.jpg`);
 
@@ -36,32 +47,25 @@ document.addEventListener("DOMContentLoaded", () => {
             beforeRef.put(beforeFile).then(snapshot => snapshot.ref.getDownloadURL()),
             afterRef.put(afterFile).then(snapshot => snapshot.ref.getDownloadURL())
         ]).then(([beforeUrl, afterUrl]) => {
+            console.log("✅ Upload successful");
             console.log("Before Image URL:", beforeUrl);
             console.log("After Image URL:", afterUrl);
 
             uploadStatus.innerText = "Images uploaded successfully!";
 
-            // Optionally, store the URLs in Firestore for tracking
             return firebase.firestore().collection("uploads").add({
-                userId: userId,
+                userId,
                 beforeImage: beforeUrl,
                 afterImage: afterUrl,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
             });
         }).then(() => {
-            console.log("Image URLs stored in Firestore.");
+            console.log("✅ Image URLs stored in Firestore.");
         }).catch(error => {
-            console.error("Upload failed:", error);
+            console.error("❌ Upload failed:", error);
             uploadStatus.innerText = "Upload failed: " + error.message;
         });
     }
 
-    // Wait for Firebase Auth to be ready before allowing uploads
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            submitButton.addEventListener("click", uploadFiles);
-        } else {
-            console.warn("User not signed in. Upload button will not work.");
-        }
-    });
+    submitButton.addEventListener("click", uploadFiles);
 });
