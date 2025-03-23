@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const beforeImageInput = document.getElementById("beforeImage");
     const afterImageInput = document.getElementById("afterImage");
     const uploadStatus = document.getElementById("uploadStatus");
-    const submitButton = document.getElementById("submitButton");
+    const submitButton = document.getElementById("submitBtn");
 
     if (!submitButton) {
         console.error("❌ Error: Submit button not found.");
