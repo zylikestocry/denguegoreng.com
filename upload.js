@@ -4,10 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const beforeImageInput = document.getElementById("beforeImage");
     const afterImageInput = document.getElementById("afterImage");
     const uploadStatus = document.getElementById("uploadStatus");
-    const submitButton = document.getElementById("submitBtn");
+    const submitButton = document.getElementById("submitButton");
 
-    if (!beforeImageInput || !afterImageInput || !submitButton) {
-        console.error("❌ Missing input elements.");
+    if (!submitButton) {
+        console.error("❌ Error: Submit button not found.");
+        return;
+    }
+
+    if (!beforeImageInput || !afterImageInput) {
+        console.error("❌ Error: Image input fields not found.");
         return;
     }
 
