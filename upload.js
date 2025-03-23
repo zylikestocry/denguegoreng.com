@@ -1,5 +1,3 @@
-console.log("✅ upload.js has loaded successfully!");
-
 document.addEventListener("DOMContentLoaded", () => {
     console.log("✅ upload.js loaded");
 
@@ -18,19 +16,22 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // ✅ Track login state globally
-    let currentUser = null;
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            console.log("✅ User authenticated:", user.uid);
-            currentUser = user; // Store user globally
-        } else {
-            console.warn("⚠️ User not logged in.");
-            currentUser = null;
+    submitButton.addEventListener("click", async () => {
+        console.log("✅ Submit button clicked! Checking authentication...");
+
+        const user = firebase.auth().currentUser;
+        if (!user) {
+            console.error("❌ User not authenticated! Redirecting to login...");
+            alert("Please sign in before uploading.");
+            window.location.href = "login.html";
+            return;
         }
+
+        console.log("✅ User is authenticated:", user.uid);
+        await uploadFiles(user);
     });
 
-    function uploadFiles() {
+    async function uploadFiles(user) {
         console.log("✅ uploadFiles() triggered");
 
         if (!beforeImageInput.files.length || !afterImageInput.files.length) {
@@ -45,67 +46,40 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        if (!currentUser) {
-            uploadStatus.innerText = "Please sign in first.";
-            console.error("❌ User is not signed in.");
-            return;
-        }
-
-        const userId = currentUser.uid;
+        const userId = user.uid;
         const beforeFile = beforeImageInput.files[0];
         const afterFile = afterImageInput.files[0];
         const timestamp = Date.now();
 
-        console.log(`Uploading for user ${userId}...`);
+        console.log(`📤 Uploading files for user ${userId}...`);
 
         const beforeRef = firebase.storage().ref(`user_uploads/${userId}/before_${timestamp}.jpg`);
         const afterRef = firebase.storage().ref(`user_uploads/${userId}/after_${timestamp}.jpg`);
 
-        Promise.all([
-            beforeRef.put(beforeFile).then(snapshot => snapshot.ref.getDownloadURL()),
-            afterRef.put(afterFile).then(snapshot => snapshot.ref.getDownloadURL())
-        ]).then(([beforeUrl, afterUrl]) => {
+        try {
+            const beforeSnapshot = await beforeRef.put(beforeFile);
+            const afterSnapshot = await afterRef.put(afterFile);
+
+            const beforeUrl = await beforeSnapshot.ref.getDownloadURL();
+            const afterUrl = await afterSnapshot.ref.getDownloadURL();
+
             console.log("✅ Upload successful");
             console.log("Before Image URL:", beforeUrl);
             console.log("After Image URL:", afterUrl);
 
             uploadStatus.innerText = "Images uploaded successfully!";
 
-            return firebase.firestore().collection("uploads").add({
+            await firebase.firestore().collection("uploads").add({
                 userId,
                 beforeImage: beforeUrl,
                 afterImage: afterUrl,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
             });
-        }).then(() => {
+
             console.log("✅ Image URLs stored in Firestore.");
-        }).catch(error => {
+        } catch (error) {
             console.error("❌ Upload failed:", error);
             uploadStatus.innerText = "Upload failed: " + error.message;
-        });
+        }
     }
-
-  submitButton.addEventListener("click", () => {
-    console.log("🔥 Submit button clicked! Checking auth status...");
-
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            console.log("✅ User is authenticated:", user.uid);
-            console.log("🚀 Calling uploadFiles()...");
-
-            uploadFiles(user); // Upload function should run now
-        } else {
-            console.error("❌ User not authenticated! Redirecting to login...");
-            alert("Please sign in before uploading.");
-            window.location.href = "login.html"; // Redirect to login page
-        }
-    });
-});
-
-        }
-    });
-});
-
-        }
-    });
 });
