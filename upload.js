@@ -83,18 +83,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    submitButton.addEventListener("click", () => {
-    console.log("🔥 Submit button clicked! Checking user authentication...");
+  submitButton.addEventListener("click", () => {
+    console.log("🔥 Submit button clicked! Checking auth status...");
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             console.log("✅ User is authenticated:", user.uid);
             console.log("🚀 Calling uploadFiles()...");
-            uploadFiles(user);  // Calls the function to upload files
+
+            uploadFiles(user); // Upload function should run now
         } else {
             console.error("❌ User not authenticated! Redirecting to login...");
             alert("Please sign in before uploading.");
             window.location.href = "login.html"; // Redirect to login page
+        }
+    });
+});
+
         }
     });
 });
