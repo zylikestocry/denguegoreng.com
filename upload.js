@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const uploadStatus = document.getElementById("uploadStatus");
     const submitButton = document.getElementById("submitButton");
 
+    // Ensure the button exists before adding an event listener
     if (!submitButton) {
         console.error("Error: Submit button not found.");
         return;
