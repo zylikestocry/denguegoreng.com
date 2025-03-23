@@ -1,3 +1,5 @@
+console.log("✅ upload.js has loaded successfully!");
+
 document.addEventListener("DOMContentLoaded", () => {
     console.log("✅ upload.js loaded");
 
