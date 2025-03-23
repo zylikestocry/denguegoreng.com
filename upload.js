@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    function uploadFiles() {
+    function uploadFiles(user) {
         console.log("✅ uploadFiles() triggered");
 
         if (!beforeImageInput.files.length || !afterImageInput.files.length) {
@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const user = firebase.auth().currentUser;
         if (!user) {
             uploadStatus.innerText = "Please sign in first.";
             console.error("❌ User is not signed in.");
@@ -72,5 +71,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    submitButton.addEventListener("click", uploadFiles);
+    submitButton.addEventListener("click", () => {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                console.log("✅ User is authenticated:", user.uid);
+                uploadFiles(user);
+            } else {
+                console.error("❌ User not authenticated! Redirecting to login...");
+                alert("Please sign in before uploading.");
+                window.location.href = "login.html"; // Redirect to login page
+            }
+        });
+    });
 });
