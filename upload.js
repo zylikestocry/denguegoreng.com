@@ -16,7 +16,19 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    function uploadFiles(user) {
+    // ✅ Track login state globally
+    let currentUser = null;
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            console.log("✅ User authenticated:", user.uid);
+            currentUser = user; // Store user globally
+        } else {
+            console.warn("⚠️ User not logged in.");
+            currentUser = null;
+        }
+    });
+
+    function uploadFiles() {
         console.log("✅ uploadFiles() triggered");
 
         if (!beforeImageInput.files.length || !afterImageInput.files.length) {
@@ -31,13 +43,13 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        if (!user) {
+        if (!currentUser) {
             uploadStatus.innerText = "Please sign in first.";
             console.error("❌ User is not signed in.");
             return;
         }
 
-        const userId = user.uid;
+        const userId = currentUser.uid;
         const beforeFile = beforeImageInput.files[0];
         const afterFile = afterImageInput.files[0];
         const timestamp = Date.now();
@@ -72,15 +84,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     submitButton.addEventListener("click", () => {
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                console.log("✅ User is authenticated:", user.uid);
-                uploadFiles(user);
-            } else {
-                console.error("❌ User not authenticated! Redirecting to login...");
-                alert("Please sign in before uploading.");
-                window.location.href = "login.html"; // Redirect to login page
-            }
-        });
+        if (currentUser) {
+            console.log("✅ User is authenticated. Proceeding with upload...");
+            uploadFiles();
+        } else {
+            console.error("❌ User not authenticated! Redirecting to login...");
+            alert("Please sign in before uploading.");
+            window.location.href = "login.html"; // Redirect to login page
+        }
     });
 });
