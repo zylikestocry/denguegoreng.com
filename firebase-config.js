@@ -20,8 +20,3 @@ const storage = firebase.storage();
 window.auth = auth;
 window.provider = provider;
 window.storage = storage;
-
-        .catch(error => console.error("Sign-out error:", error));
-};
-
-window.storage = storage;
