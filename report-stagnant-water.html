@@ -11,8 +11,8 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
 
-    <!-- Load Firebase Config (as a module) -->
-    <script type="module" src="firebase-config.js"></script>
+    <!-- Load Firebase Config -->
+    <script src="firebase-config.js"></script>
 </head>
 <body>
     <header>
@@ -48,19 +48,7 @@
         <p>Stay informed and take action. Together, we can fight dengue!</p>
     </footer>
 
-    <!-- Load Upload Script LAST -->
+    <!-- Load Upload Script Last -->
     <script src="upload.js"></script>
-
-    <script>
-        // Ensure the button click triggers uploadFiles() from upload.js
-        document.getElementById("submitBtn").addEventListener("click", function () {
-            if (typeof uploadFiles === "function") {
-                uploadFiles();
-            } else {
-                console.error("uploadFiles function is not defined. Check upload.js.");
-            }
-        });
-    </script>
-
 </body>
 </html>
