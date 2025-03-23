@@ -84,13 +84,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     submitButton.addEventListener("click", () => {
-        if (currentUser) {
-            console.log("✅ User is authenticated. Proceeding with upload...");
-            uploadFiles();
+    console.log("🔥 Submit button clicked! Checking user authentication...");
+
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            console.log("✅ User is authenticated:", user.uid);
+            console.log("🚀 Calling uploadFiles()...");
+            uploadFiles(user);  // Calls the function to upload files
         } else {
             console.error("❌ User not authenticated! Redirecting to login...");
             alert("Please sign in before uploading.");
             window.location.href = "login.html"; // Redirect to login page
+        }
+    });
+});
+
         }
     });
 });
