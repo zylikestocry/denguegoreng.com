@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// 🔥 Ensure Both Images Are Uploaded in One Transaction
+// 🔥 Make uploadFiles globally accessible
 window.uploadFiles = async function(user) {
     console.log("🔥 uploadFiles() called with user:", user);
 
@@ -57,30 +57,24 @@ window.uploadFiles = async function(user) {
     const afterFile = afterImageInput.files[0];
     const timestamp = Date.now();
 
-    console.log(`📤 Uploading both images for user ${userId}...`);
+    console.log(`📤 Uploading files for user ${userId}...`);
 
-    const storage = firebase.storage();
-    const beforeRef = storage.ref(`user_uploads/${userId}/before_${timestamp}.jpg`);
-    const afterRef = storage.ref(`user_uploads/${userId}/after_${timestamp}.jpg`);
+    const beforeRef = firebase.storage().ref(`user_uploads/${userId}/before_${timestamp}.jpg`);
+    const afterRef = firebase.storage().ref(`user_uploads/${userId}/after_${timestamp}.jpg`);
 
     try {
-        // 🌟 Upload both files simultaneously
-        const [beforeSnapshot, afterSnapshot] = await Promise.all([
-            beforeRef.put(beforeFile),
-            afterRef.put(afterFile)
-        ]);
+        const beforeSnapshot = await beforeRef.put(beforeFile);
+        const afterSnapshot = await afterRef.put(afterFile);
 
-        // ✅ Get download URLs after both images are uploaded
         const beforeUrl = await beforeSnapshot.ref.getDownloadURL();
         const afterUrl = await afterSnapshot.ref.getDownloadURL();
 
-        console.log("✅ Both images uploaded successfully");
+        console.log("✅ Upload successful");
         console.log("Before Image URL:", beforeUrl);
         console.log("After Image URL:", afterUrl);
 
         uploadStatus.innerText = "Images uploaded successfully!";
 
-        // 🌟 Store paired image URLs in Firestore
         await firebase.firestore().collection("uploads").add({
             userId,
             beforeImage: beforeUrl,
@@ -88,9 +82,10 @@ window.uploadFiles = async function(user) {
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         });
 
-        console.log("✅ Both images stored in Firestore.");
+        console.log("✅ Image URLs stored in Firestore.");
     } catch (error) {
         console.error("❌ Upload failed:", error);
         uploadStatus.innerText = "Upload failed: " + error.message;
     }
 };
+
