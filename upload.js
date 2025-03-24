@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
 
             uploadStatus.innerText = "Images uploaded! Verification in progress...";
+            showPopup(); // Show pop-up after successful upload
         } catch (error) {
             console.error("❌ Upload failed:", error);
             uploadStatus.innerText = "Upload failed: " + error.message;
@@ -78,3 +79,50 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 });
 
+// Pop-up functions
+function showPopup() {
+    const popup = document.createElement("div");
+    popup.id = "customPopup";
+    popup.innerHTML = `
+        <div class="popup-content">
+            <p>✅ Images uploaded successfully! Verification in progress...</p>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    `;
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.backgroundColor = "#add8e6";
+    popup.style.padding = "20px";
+    popup.style.borderRadius = "15px";
+    popup.style.boxShadow = "0px 4px 10px rgba(0, 0, 0, 0.2)";
+    popup.style.fontFamily = "Comic Sans MS, cursive, sans-serif";
+    popup.style.textAlign = "center";
+    popup.style.zIndex = "1000";
+
+    const button = popup.querySelector("button");
+    button.style.backgroundColor = "white";
+    button.style.border = "none";
+    button.style.padding = "10px 20px";
+    button.style.borderRadius = "10px";
+    button.style.cursor = "pointer";
+    button.style.fontSize = "16px";
+    button.style.marginTop = "10px";
+
+    button.addEventListener("mouseover", () => {
+        button.style.backgroundColor = "#f0f0f0";
+    });
+    button.addEventListener("mouseout", () => {
+        button.style.backgroundColor = "white";
+    });
+
+    document.body.appendChild(popup);
+}
+
+function closePopup() {
+    const popup = document.getElementById("customPopup");
+    if (popup) {
+        popup.remove();
+    }
+}
