@@ -86,6 +86,16 @@ function showPopup() {
     popup.innerHTML = `
         <div class="popup-content">
             <p>✅ Images uploaded successfully! Verification in progress...</p>
+            // Function to show the pop-up
+function showPopup() {
+    document.getElementById("uploadPopup").style.display = "block";
+}
+
+// Function to close the pop-up
+function closePopup() {
+    document.getElementById("uploadPopup").style.display = "none";
+}
+
             <button onclick="closePopup()">OK</button>
         </div>
     `;
