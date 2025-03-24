@@ -14,16 +14,38 @@
     <section id="upload-section">
         <h2>Help us prevent dengue by uploading images of stagnant water!</h2>
 
-        <form id="upload-form" action="upload-process.php" method="POST" enctype="multipart/form-data">
-            <input type="file" name="stagnant-water-image" accept="image/*" required>
-            <button type="submit">Upload Image</button>
-        </form>
+        <input type="file" id="beforeImage" accept="image/*" required>
+        <input type="file" id="afterImage" accept="image/*" required>
+        <button type="button" id="submitBtn">Upload Image</button>
+
+        <p id="uploadStatus"></p>
     </section>
 
     <footer>
         <p>Thank you for your action in preventing dengue!</p>
     </footer>
-    <script src="user-tracking.js"></script>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
+    <script>
+        // ✅ Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR-API-KEY",
+            authDomain: "dengue-454102.firebaseapp.com",
+            projectId: "dengue-454102",
+            storageBucket: "dengue-454102.appspot.com",
+            messagingSenderId: "YOUR-MESSAGING-SENDER-ID",
+            appId: "YOUR-APP-ID"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="upload.js"></script>
 </body>
 </html>
