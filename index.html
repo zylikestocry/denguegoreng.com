@@ -3,52 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dengue Prevention Awareness</title>
+    <title>Buzz Off - Multiplayer Dengue Card Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Dengue Prevention Awareness</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="prevention.html">How to Prevent Dengue</a></li>
-                <li><a href="clear-water.html">Clear Stagnant Water</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Google Sign-In Button -->
-    <button id="google-signin">Sign in with Google</button>
-    <p id="user-info"></p>
+    <header>
+        <h1>Welcome to Buzz Off!</h1>
+        <p>Multiplayer Dengue Awareness Card Game</p>
+        <button id="start-game">Start Game</button>
+    </header>
 
     <section id="info">
         <h2>What is Dengue?</h2>
-        <p>Dengue is a viral disease caused by the dengue virus, which is primarily transmitted to humans through the bite of infected female Aedes mosquitoes. The most common species responsible for spreading dengue are <i>Aedes aegypti</i> and <i>Aedes albopictus</i>. These mosquitoes thrive in tropical and subtropical regions.</p>
-
-        <p>The symptoms of dengue include high fever, severe headaches, joint pain, muscle pain, rash, and nausea. In some cases, the disease can lead to complications such as dengue hemorrhagic fever (DHF) or dengue shock syndrome (DSS), both of which can be fatal.</p>
-
-        <p><img src="https://www.techexplorist.com/wp-content/uploads/2018/12/Dengue-Virus.jpg" alt="Dengue Virus Magnification" class="responsive-image"></p>
-
-        <h3>How Does Dengue Spread?</h3>
-        <p>Dengue spreads when a mosquito bites an infected person and then transmits the virus to others. The virus is not transmitted directly from person to person, making mosquito control essential.</p>
-
-        <h3>Why Is Dengue Dangerous?</h3>
-        <p>Dengue poses a serious health risk, with complications that can cause severe bleeding and organ failure. According to the WHO, an estimated 50-100 million cases of dengue occur each year globally.</p>
+        <p>Dengue is a viral disease caused by the dengue virus, primarily transmitted by infected Aedes mosquitoes.</p>
+        <p><img src="https://www.techexplorist.com/wp-content/uploads/2018/12/Dengue-Virus.jpg" alt="Dengue Virus" class="responsive-image"></p>
     </section>
 
     <section id="stats">
         <h2>Dengue Cases in Recent Years</h2>
-        <p>The incidence of dengue has been rising rapidly, with over 5 million reported cases globally in 2023. Southeast Asia, Latin America, and parts of Africa are the most affected regions.</p>
+        <p>Over 5 million cases of dengue were reported globally in 2023.</p>
+        <p><img src="https://ourworldindata.org/grapher/exports/dengue-incidence.png?v=1" alt="Dengue Statistics" class="responsive-image"></p>
+    </section>
 
-        <p><img src="https://ourworldindata.org/grapher/exports/dengue-incidence.png?v=1" alt="Dengue Statistics Chart" class="responsive-image"></p>
-
-        <h3>Geographic Distribution of Dengue</h3>
-        <p>Once limited to tropical areas, dengue is now expanding to temperate zones due to climate change and increased urbanization.</p>
-
-        <h3>Why We Need to Act Now</h3>
-        <p>Controlling mosquito populations is essential to preventing outbreaks. Simple actions like eliminating stagnant water and using insect repellents can help reduce cases.</p>
+    <section id="login">
+        <h2>Login to Track Your Contributions</h2>
+        <button id="google-signin">Sign in with Google</button>
+        <p id="user-info"></p>
     </section>
 
     <footer>
@@ -76,16 +57,16 @@
         const provider = new GoogleAuthProvider();
         const storage = getStorage(app);
 
-        // Google Sign-In
+        // Google Sign-In Functionality
         document.getElementById("google-signin").addEventListener("click", () => {
             signInWithPopup(auth, provider)
                 .then((result) => {
                     const user = result.user;
                     document.getElementById("user-info").innerHTML = `Signed in as: ${user.email}`;
-                    localStorage.setItem("userEmail", user.email); // Save user email for tracking uploads
+                    localStorage.setItem("userEmail", user.email); // Store user email for tracking uploads
                 })
                 .catch((error) => {
-                    console.error(error);
+                    console.error("Login Error:", error);
                 });
         });
 
@@ -107,13 +88,14 @@
             }
         }
 
-        // Example Usage - Replace 'USER_ID' with the actual user ID
+        // Example Usage - Replace 'USER_ID' with actual user ID
         getImageURLs("USER_ID").then(urls => {
             if (urls) {
                 console.log("Retrieved URLs:", urls);
             }
         });
     </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
