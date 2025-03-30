@@ -1,5 +1,4 @@
 // upload.js - Firebase Storage & Google Vision AI Integration
-<script src="https://cdn.jsdelivr.net/npm/browser-image-compression"></script>
 
 
 document.addEventListener("DOMContentLoaded", async () => {
