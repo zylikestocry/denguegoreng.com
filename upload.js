@@ -82,21 +82,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Image compression function
 async function compressImage(file) {
-    const options = {
-        maxSizeMB: 1, // Max size 1MB
-        maxWidthOrHeight: 1024, // Resize image
-        useWebWorker: true
-    };
-
     try {
-        const compressedFile = await imageCompression(file, options);
-        console.log("✅ Image compressed:", compressedFile);
-        return compressedFile;
+        const options = {
+            maxSizeMB: 1, // Reduce image size to max 1MB
+            maxWidthOrHeight: 1024, // Resize if too large
+            useWebWorker: true // Speed up compression
+        };
+        return await imageCompression(file, options);
     } catch (error) {
         console.error("❌ Image compression failed:", error);
-        return file; // Return original file if compression fails
+        throw error;
     }
 }
+
 
 // Pop-up functions
 function showPopup() {
